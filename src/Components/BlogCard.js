@@ -15,11 +15,10 @@ class BlogCard extends Component{
         beenClicked: false
     }
 
-    incrementCounter = () => {
-        // this.state.counter = this.state.counter +1
-        this.setState({counter: this.state.counter + 1})
+    // localIncrementCounter = () => {
+    //    this.props.incrementCounter()
         
-    }
+    // }
 
     moreDetailsClickHandler = () => {
         console.log("clicking")
@@ -33,6 +32,9 @@ class BlogCard extends Component{
 
         }
     }
+    localAddSavedBlog = () => {
+        this.props.addSavedBlog(this.props.blogObject)
+    }
 
     render(){
         const {blogObject} = this.props
@@ -43,8 +45,8 @@ class BlogCard extends Component{
 
             {/* {this.state.beenClicked ? <h4>By:{blogObject.author}</h4>:null} */}
             {this.renderMoreDetails()}
-            <h4>Counter: {this.state.counter}</h4>
-            <button onClick={this.incrementCounter}>Save</button>
+
+            <button onClick={this.localAddSavedBlog}>Save</button>
             <button>Visit</button>
             <button onClick={this.moreDetailsClickHandler}>{this.state.beenClicked ? "Less Details": "More Details"}</button>
         </div>    

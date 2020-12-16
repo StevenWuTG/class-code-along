@@ -4,15 +4,16 @@ import BlogCard from '../Components/BlogCard'
 
 class BlogsList extends React.Component {
 
-    render(){
-        let arrayOfBlogCards = apiResponse.map(blogEl => <BlogCard blogObject={blogEl} />)
-        
-        console.log("array of cards", arrayOfBlogCards)
+    arrayOfBlogCards = () => {
+        return apiResponse.map(blogEl => <BlogCard key={blogEl.id} blogObject={blogEl} addSavedBlog={this.props.addSavedBlog}/>)
+    }
 
+    render(){
+        
         return (
             
             <>
-                {arrayOfBlogCards}
+                {this.arrayOfBlogCards()}
             </>
             
         )
