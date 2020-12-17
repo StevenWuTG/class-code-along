@@ -19,12 +19,22 @@ class App extends React.Component {
     })
 
   }
+
+
+  removeSavedBlog = (blogObject) => {
+    console.log("inside app click handler",blogObject)
+    this.setState({
+      savedBlogs: [...this.state.savedBlogs, blogObject]
+    })
+
+  }
+
   render(){
     return (
       <div className="App">
         {/* <Counter counter={this.state.counter}/> */}
-        <SavedBlog savedBlogs={this.state.savedBlogs}/>
-        <BlogsList addSavedBlog={this.addSavedBlog}  />
+        <SavedBlog clickHandler={this.removeSavedBlog}/>
+        <BlogsList clickHandler={this.addSavedBlog}  />
       </div>
     );
 
